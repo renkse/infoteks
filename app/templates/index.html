@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание</title>
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'js/send-number.js' %}"></script>
+</head>
+<body>
+    <form action="{% url 'prime-factors' %}" id="prime-factors">
+        {% csrf_token %}
+        <input type="text" id="number" name="number">
+        <span id="result"></span>
+        {% if messages %}
+            {% for mes in messages %}
+                <span>{{ mes }}</span>
+            {% endfor %}
+        {% endif %}
+    </form>
+</body>
+</html>
