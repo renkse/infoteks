@@ -15,7 +15,8 @@ def prime_factors(request):
         number = request.POST['number']
         if number.isdigit():
             factors = get_prime_factors(int(number))
-            return HttpResponse(str(factors).strip('[]'))
+            result = ' = ' + str(factors).strip('[]').replace(',',' *')
+            return HttpResponse(result)
         else:
             return HttpResponse('Input positive number, please')
     else:
